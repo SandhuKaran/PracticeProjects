@@ -1,10 +1,15 @@
-// src/components/Car.js
 import React from "react";
 import "./Car.css";
 
-const Car = ({ position }) => {
+const Car = ({ position, direction }) => {
+  const style = {
+    top: position.y,
+    left: position.x,
+    transform: direction === "vertical" ? "rotate(90deg)" : "none", // Rotate car if direction is vertical
+  };
+
   return (
-    <div className="car" style={{ top: position.y, left: position.x }}>
+    <div className="car" style={style}>
       <div className="car-body">
         <div className="car-headlight car-headlight-left"></div>
         <div className="car-headlight car-headlight-right"></div>
