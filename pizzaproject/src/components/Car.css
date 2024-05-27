@@ -1,0 +1,59 @@
+/* src/components/Car.css */
+.car {
+  position: absolute;
+  width: 29px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.1s linear, top 0.1s linear;
+}
+
+.car-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 2px 8px 8px 2px; /* Rounded front corners, sharp back corners */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5); /* Sharper shadow */
+}
+
+.car-headlight {
+  position: absolute;
+  width: 1px;
+  height: 4px;
+  margin-right: 5.5px;
+  background-color: white;
+  border-radius: 10%;
+}
+
+.car-headlight-left {
+  top: 2px;
+  right: -2px;
+  transform: rotate(-30deg);
+}
+
+.car-headlight-right {
+  bottom: 2px;
+  right: -2px;
+  transform: rotate(30deg);
+}
+
+.car-windshield-rear {
+  width: 7%;
+  height: 70%;
+  background-color: rgba(255, 255, 255, 0.5); /* Transparent windshields */
+  border-radius: 1px 1px 1px 1px; /* Rounded corners */
+  margin-left: 6px;
+}
+
+.car-windshield-front {
+  width: 12%;
+  height: 80%;
+  background-color: rgba(255, 255, 255, 0.5); /* Transparent windshields */
+  border-radius: 1px 4px 4px 1px; /* Rounded corners */
+  margin-right: 8px;
+}
