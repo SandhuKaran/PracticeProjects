@@ -1,0 +1,59 @@
+/* src/components/WelcomeText.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap");
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.welcome-text {
+  position: absolute;
+  top: 10%; /* Adjust to move text towards the top */
+  left: 10%; /* Adjust to move text towards the left */
+  text-align: left; /* Left-align the text */
+  z-index: 1; /* Ensure it appears above the background cars */
+}
+
+.welcome-text h1,
+.welcome-text h2,
+.welcome-text h3 {
+  margin: 0;
+  font-weight: bold;
+  color: #000;
+  opacity: 0;
+  animation: fadeIn 3s forwards;
+}
+
+.welcome-text h1 {
+  font-size: 6rem; /* Adjust size as needed */
+  animation-delay: 0s; /* No delay for the first line */
+  line-height: 1.2; /* Reduced line height */
+}
+
+.welcome-text h2 {
+  font-size: 6rem; /* Adjust size as needed */
+  animation-delay: 1.5s; /* 1.5 second delay for the second line */
+  line-height: 1.2; /* Reduced line height */
+  margin-top: 0.5rem; /* Reduced space between the lines */
+}
+
+.welcome-text h3 {
+  font-size: 6rem; /* Adjust size as needed */
+  animation-delay: 3s; /* 3 seconds delay for the third line */
+  line-height: 1.2; /* Reduced line height */
+  margin-top: 0.5rem; /* Reduced space between the lines */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

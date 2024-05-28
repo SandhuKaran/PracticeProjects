@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Car from "./Car";
 import { moveCar } from "../utils/moveCars";
 import "./AnimatedBackground.css";
+import "./WelcomeText.css"; // Import the new CSS file
 
 const AnimatedBackground = () => {
   const [cars, setCars] = useState([]);
@@ -60,6 +61,11 @@ const AnimatedBackground = () => {
 
   return (
     <div className="animated-background">
+      <div className="welcome-text poppins-black">
+        <h1>Travel</h1>
+        <h2>simpler</h2>
+        <h3>and easier.</h3>
+      </div>
       {cars.map((car) => (
         <Car key={car.id} position={car.position} direction={car.direction} />
       ))}
