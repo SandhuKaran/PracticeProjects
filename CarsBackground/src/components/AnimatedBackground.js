@@ -59,9 +59,16 @@ const AnimatedBackground = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToSection = () => {
+    const element = document.getElementById("section-origin");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" }); // Scrolls to the section instantly
+    }
+  };
+
   return (
     <div className="animated-background">
-      <div className="welcome-text poppins-black">
+      <div className="welcome-text poppins-thin">
         <h1>Travel</h1>
         <h2>simpler</h2>
         <h3>and easier.</h3>
@@ -69,6 +76,9 @@ const AnimatedBackground = () => {
       {cars.map((car) => (
         <Car key={car.id} position={car.position} direction={car.direction} />
       ))}
+      <div className="scroll-indicator" onClick={scrollToSection}>
+        ↓
+      </div>
     </div>
   );
 };

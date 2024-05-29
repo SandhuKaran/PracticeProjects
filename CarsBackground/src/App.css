@@ -1,7 +1,36 @@
+/* App.css */
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
-  position: relative; /* Ensure child elements can use absolute positioning */
-  width: 100%;
-  height: 100vh; /* Full height to accommodate the background */
+}
+
+section {
+  height: 100vh; /* Full height for each section */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start; /* Snap to the start of each section */
+}
+
+.section-welcome {
+  background: #f0f0f0; /* Or any other background */
+  position: relative;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.section-origin {
+  min-height: 100vh; /* Minimum viewport height */
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add some padding */
+}
+
+.origin-input-container {
+  text-align: center;
 }
