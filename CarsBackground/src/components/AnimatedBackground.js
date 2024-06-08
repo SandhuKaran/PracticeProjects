@@ -62,7 +62,7 @@ const AnimatedBackground = () => {
   const scrollToSection = () => {
     const element = document.getElementById("section-origin");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" }); // Scrolls to the section instantly
+      element.scrollIntoView({ behavior: "smooth" }); // Scrolls to the section smoothly
     }
   };
 

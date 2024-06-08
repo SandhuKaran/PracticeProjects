@@ -6,9 +6,14 @@
   font-style: normal;
 }
 
+.origin-text {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
 .origin-input-container {
   text-align: center;
-  margin-top: -40vh;
+  margin-top: 10vh;
 }
 
 .origin-input-container h1 {

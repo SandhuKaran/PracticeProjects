@@ -1,3 +1,5 @@
+// index.js
+
 import React, { StrictMode } from "react";
 import { useEffect } from "react";
 import ReactDOM from "react-dom/client";
@@ -13,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <section>
+      <section id="section-welcome">
         <AnimatedBackground />
       </section>
       <section id="section-origin" className="section-origin">
@@ -26,6 +28,6 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <App />
+    <App /> {/* Render App component */}
   </StrictMode>
 );
