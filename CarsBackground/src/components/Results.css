@@ -1,0 +1,26 @@
+.results-background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.results-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.results-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  font-weight: inherit;
+}
+
+.results-content p {
+  font-size: 1.5rem;
+}

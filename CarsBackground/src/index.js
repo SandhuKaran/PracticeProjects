@@ -1,13 +1,21 @@
-// index.js
-
-import React, { StrictMode } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import AnimatedBackground from "./components/AnimatedBackground";
 import OriginInput from "./components/OriginInput";
+import Results from "./components/Results";
 import "./App.css";
 
 function App() {
+  const [addresses, setAddresses] = useState([]);
+
+  const handleSubmit = (newAddresses) => {
+    setAddresses(newAddresses);
+    const element = document.getElementById("section-results");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
@@ -19,7 +27,10 @@ function App() {
         <AnimatedBackground />
       </section>
       <section id="section-origin" className="section-origin">
-        <OriginInput />
+        <OriginInput onSubmit={handleSubmit} />
+      </section>
+      <section id="section-results" className="section-results">
+        <Results addresses={addresses} />
       </section>
     </div>
   );
@@ -27,7 +38,7 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <StrictMode>
+  <React.StrictMode>
     <App /> {/* Render App component */}
-  </StrictMode>
+  </React.StrictMode>
 );

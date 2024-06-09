@@ -4,9 +4,11 @@ import { moveCar } from "../utils/moveCars";
 import "./OriginInput.css";
 import "./WelcomeText.css"; // Import the new CSS file
 
-const OriginInput = () => {
+const OriginInput = ({ onSubmit }) => {
   const [cars, setCars] = useState([]);
+  const [origin, setOrigin] = useState("");
   const [stops, setStops] = useState([""]);
+  const [destination, setDestination] = useState("");
   const sectionRef = useRef(null);
 
   // Function to generate a random position for a car outside the screen bounds
@@ -70,7 +72,7 @@ const OriginInput = () => {
             console.log("Element in view:", entry.target);
             setTimeout(() => {
               entry.target.classList.add("visible");
-            }, 1000); // 1 second delay
+            }, 300); // 0.3 second delay
             observer.unobserve(entry.target);
           }
         });
@@ -92,7 +94,7 @@ const OriginInput = () => {
   }, []);
 
   const scrollToSection = () => {
-    const element = document.getElementById("section-origin");
+    const element = document.getElementById("section-results");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" }); // Scrolls to the section smoothly
     }
@@ -110,12 +112,27 @@ const OriginInput = () => {
     setStops(newStops);
   };
 
+  const handleSubmit = () => {
+    const addresses = [
+      origin,
+      ...stops.filter((stop) => stop !== ""),
+      destination,
+    ];
+    onSubmit(addresses);
+    scrollToSection();
+  };
+
   return (
     <div className="animated-background">
       <div className="input-sections poppins-thin" ref={sectionRef}>
         <div className="input-section">
           <h1>Origin</h1>
-          <input type="text" placeholder="Enter origin address" />
+          <input
+            type="text"
+            placeholder="Enter origin address"
+            value={origin}
+            onChange={(e) => setOrigin(e.target.value)}
+          />
         </div>
         <div className="input-section">
           <h1>Stops</h1>
@@ -132,13 +149,18 @@ const OriginInput = () => {
         </div>
         <div className="input-section">
           <h1>Destination</h1>
-          <input type="text" placeholder="Enter destination address" />
+          <input
+            type="text"
+            placeholder="Enter destination address"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+          />
         </div>
       </div>
       {cars.map((car) => (
         <Car key={car.id} position={car.position} direction={car.direction} />
       ))}
-      <div className="scroll-indicator" onClick={scrollToSection}>
+      <div className="scroll-indicator" onClick={handleSubmit}>
         ↓
       </div>
     </div>
