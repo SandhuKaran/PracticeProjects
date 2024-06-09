@@ -1,5 +1,4 @@
-// OriginInput.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Car from "./Car";
 import { moveCar } from "../utils/moveCars";
 import "./OriginInput.css";
@@ -7,6 +6,7 @@ import "./WelcomeText.css"; // Import the new CSS file
 
 const OriginInput = () => {
   const [cars, setCars] = useState([]);
+  const sectionRef = useRef(null);
 
   // Function to generate a random position for a car outside the screen bounds
   const generateInitialPosition = () => {
@@ -60,6 +60,36 @@ const OriginInput = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Intersection Observer for fade-in effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            console.log("Element in view:", entry.target);
+            setTimeout(() => {
+              entry.target.classList.add("visible");
+            }, 100); // 0.1 second delay
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = sectionRef.current.querySelectorAll(".input-section");
+    elements.forEach((element) => {
+      console.log("Observing element:", element);
+      observer.observe(element);
+    });
+
+    return () => {
+      elements.forEach((element) => {
+        observer.unobserve(element);
+      });
+    };
+  }, []);
+
   const scrollToSection = () => {
     const element = document.getElementById("section-origin");
     if (element) {
@@ -69,11 +99,20 @@ const OriginInput = () => {
 
   return (
     <div className="animated-background">
-      <div className="origin-text poppins-thin">
-        <h1>Origin</h1>
-        <h2>address</h2>
-        <div className="origin-input-container">
-          <input type="text"></input>
+      <div className="input-sections poppins-thin" ref={sectionRef}>
+        <div className="input-section">
+          <h1>Origin</h1>
+          <input type="text" placeholder="Enter origin address" />
+        </div>
+        <div className="input-section">
+          <h1>Stops</h1>
+          <input type="text" placeholder="Enter stop 1" />
+          <input type="text" placeholder="Enter stop 2" />
+          <input type="text" placeholder="Enter stop 3" />
+        </div>
+        <div className="input-section">
+          <h1>Destination</h1>
+          <input type="text" placeholder="Enter destination address" />
         </div>
       </div>
       {cars.map((car) => (

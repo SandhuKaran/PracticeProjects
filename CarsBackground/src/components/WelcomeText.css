@@ -1,4 +1,4 @@
-/* src/components/WelcomeText.css */
+/* WelcomeText.css */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap");
 
@@ -22,17 +22,15 @@
 
 .welcome-text {
   position: absolute;
-  top: 13%; /* Adjust to move text towards the top */
-  left: 10%; /* Adjust to move text towards the left */
-  text-align: left; /* Left-align the text */
-  z-index: 1; /* Ensure it appears above the background cars */
+  top: 13%;
+  left: 10%;
+  text-align: left;
+  z-index: 1;
 }
 
 .welcome-text h1,
 .welcome-text h2,
-.welcome-text h3,
-.origin-text h1,
-.origin-text h2 {
+.welcome-text h3 {
   margin: 0;
   font-weight: inherit;
   color: #000;
@@ -41,44 +39,23 @@
 }
 
 .welcome-text h1 {
-  font-size: 8rem; /* Adjust size as needed */
-  animation-delay: 0s; /* No delay for the first line */
-  line-height: 1.1; /* Reduced line height */
+  font-size: 8rem;
+  animation-delay: 0s;
+  line-height: 1.1;
 }
 
 .welcome-text h2 {
-  font-size: 8rem; /* Adjust size as needed */
-  animation-delay: 1s; /* 1.5 second delay for the second line */
-  line-height: 1.1; /* Reduced line height */
-  margin-top: 0.5rem; /* Reduced space between the lines */
+  font-size: 8rem;
+  animation-delay: 1s;
+  line-height: 1.1;
+  margin-top: 0.5rem;
 }
 
 .welcome-text h3 {
-  font-size: 8rem; /* Adjust size as needed */
-  animation-delay: 2s; /* 3 seconds delay for the third line */
-  line-height: 1.1; /* Reduced line height */
-  margin-top: 0.5rem; /* Reduced space between the lines */
-}
-
-.origin-text {
-  position: absolute;
-  top: 13%; /* Adjust to move text towards the top */
-  left: 50%; /* Adjust to move text towards the left */
-  text-align: left; /* Left-align the text */
-  z-index: 1; /* Ensure it appears above the background cars */
-}
-
-.origin-text h1 {
-  font-size: 8rem; /* Adjust size as needed */
-  animation-delay: 0s; /* No delay for the first line */
-  line-height: 1.1; /* Reduced line height */
-}
-
-.origin-text h2 {
-  font-size: 8rem; /* Adjust size as needed */
-  animation-delay: 1s; /* 1.5 second delay for the second line */
-  line-height: 1.1; /* Reduced line height */
-  margin-top: 0.5rem; /* Reduced space between the lines */
+  font-size: 8rem;
+  animation-delay: 2s;
+  line-height: 1.1;
+  margin-top: 0.5rem;
 }
 
 @keyframes fadeIn {

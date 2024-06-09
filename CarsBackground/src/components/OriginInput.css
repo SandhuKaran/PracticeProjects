@@ -1,37 +1,55 @@
-/* OriginInput.css */
-
-.poppins-thin {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+.animated-background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f0f0f0;
 }
 
-.origin-text {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.input-sections {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start; /* Align items at the start of the container */
+  width: 100%;
+  height: 100%;
+  padding-top: 5%; /* Add some padding at the top to ensure spacing */
 }
 
-.origin-input-container {
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-top: 10vh;
+  z-index: 1;
+  opacity: 0; /* Start hidden */
+  transform: translateY(20px); /* Start with a slight offset */
+  transition: opacity 2s ease-out, transform 4s ease-out;
 }
 
-.origin-input-container h1 {
-  font-size: 5rem;
-  margin-bottom: 20px;
+.input-section h1 {
+  font-size: 3.5rem;
+  margin: 0; /* Remove default margin */
+  padding-top: 30px; /* Adjust padding to move heading upwards */
+  padding-bottom: 10px; /* Adjust padding for space between heading and inputs */
   font-weight: inherit;
 }
 
-.origin-input-container input {
+.input-section input {
   padding: 10px;
   font-size: 1rem;
-  width: 300px;
+  width: 200px;
   border: 2px solid #ccc;
   border-radius: 20px;
   outline: none;
   transition: border-color 0.3s;
+  margin-bottom: 10px;
 }
 
-.origin-input-container input:focus {
+.input-section input:focus {
   border-color: #333;
+}
+
+.input-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
