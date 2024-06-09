@@ -6,6 +6,7 @@ import "./WelcomeText.css"; // Import the new CSS file
 
 const OriginInput = () => {
   const [cars, setCars] = useState([]);
+  const [stops, setStops] = useState([""]);
   const sectionRef = useRef(null);
 
   // Function to generate a random position for a car outside the screen bounds
@@ -69,7 +70,7 @@ const OriginInput = () => {
             console.log("Element in view:", entry.target);
             setTimeout(() => {
               entry.target.classList.add("visible");
-            }, 100); // 0.1 second delay
+            }, 1000); // 1 second delay
             observer.unobserve(entry.target);
           }
         });
@@ -97,6 +98,18 @@ const OriginInput = () => {
     }
   };
 
+  const handleStopClick = (index) => {
+    if (index === stops.length - 1 && stops.length < 15) {
+      setStops([...stops, ""]);
+    }
+  };
+
+  const handleStopChange = (index, value) => {
+    const newStops = [...stops];
+    newStops[index] = value;
+    setStops(newStops);
+  };
+
   return (
     <div className="animated-background">
       <div className="input-sections poppins-thin" ref={sectionRef}>
@@ -106,9 +119,16 @@ const OriginInput = () => {
         </div>
         <div className="input-section">
           <h1>Stops</h1>
-          <input type="text" placeholder="Enter stop 1" />
-          <input type="text" placeholder="Enter stop 2" />
-          <input type="text" placeholder="Enter stop 3" />
+          {stops.map((stop, index) => (
+            <input
+              key={index}
+              type="text"
+              placeholder={`Enter stop ${index + 1}`}
+              value={stop}
+              onChange={(e) => handleStopChange(index, e.target.value)}
+              onClick={() => handleStopClick(index)}
+            />
+          ))}
         </div>
         <div className="input-section">
           <h1>Destination</h1>
