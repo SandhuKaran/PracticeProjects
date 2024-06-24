@@ -3,16 +3,38 @@ import ReactDOM from "react-dom/client";
 import AnimatedBackground from "./components/AnimatedBackground";
 import OriginInput from "./components/OriginInput";
 import Results from "./components/Results";
+import axios from "axios";
 import "./App.css";
 
 function App() {
   const [addresses, setAddresses] = useState([]);
+  const [shortestPath, setShortestPath] = useState([""]);
 
-  const handleSubmit = (newAddresses) => {
+  const handleSubmit = async (newAddresses) => {
     setAddresses(newAddresses);
     const element = document.getElementById("section-results");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+
+    const origin = newAddresses[0];
+    const destination = newAddresses[newAddresses.length - 1];
+    const stops = newAddresses.slice(1, newAddresses.length - 1);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/shortest-path",
+        {
+          origin,
+          destination,
+          stops,
+        }
+      );
+
+      const path = response.data.shortestPath;
+      setShortestPath(path);
+    } catch (error) {
+      console.error("Error fetching shortest path:", error);
     }
   };
 
@@ -30,7 +52,7 @@ function App() {
         <OriginInput onSubmit={handleSubmit} />
       </section>
       <section id="section-results" className="section-results">
-        <Results addresses={addresses} />
+        <Results addresses={shortestPath} />
       </section>
     </div>
   );
@@ -42,3 +64,5 @@ root.render(
     <App /> {/* Render App component */}
   </React.StrictMode>
 );
+
+export default App;

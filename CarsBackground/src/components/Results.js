@@ -4,49 +4,54 @@ import { moveCar } from "../utils/moveCars";
 import "./Results.css";
 
 const Results = ({ addresses }) => {
+  const [visibleAddresses, setVisibleAddresses] = useState([]);
+
+  useEffect(() => {
+    let delay = 0;
+    addresses.forEach((address, index) => {
+      setTimeout(() => {
+        setVisibleAddresses((prevAddresses) => [...prevAddresses, address]);
+      }, delay);
+      delay += 200; // 200ms delay between each address
+    });
+  }, [addresses]);
+
   const [cars, setCars] = useState([]);
 
-  // Function to generate a random position for a car outside the screen bounds
   const generateInitialPosition = () => {
-    const side = Math.floor(Math.random() * 2); // Randomize which side the car will appear from
+    const side = Math.floor(Math.random() * 2);
     let x, y;
-
-    // Determine initial position based on which side the car appears from
     switch (side) {
-      case 0: // Top side
+      case 0:
         x = Math.random() * window.innerWidth;
-        y = -50; // Car appears just above the screen
+        y = -50;
         break;
-      case 1: // Left side
-        x = -50; // Car appears just to the left of the screen
+      case 1:
+        x = -50;
         y = Math.random() * window.innerHeight;
         break;
       default:
         break;
     }
-
     return { x, y };
   };
 
-  // Function to add a new car to the array of cars
   const addCar = () => {
     const newCar = {
       id: Math.random(),
       position: generateInitialPosition(),
-      direction: Math.random() < 0.5 ? "horizontal" : "vertical", // Randomly set direction to horizontal or vertical
+      direction: Math.random() < 0.5 ? "horizontal" : "vertical",
     };
     setCars((prevCars) => [...prevCars, newCar]);
   };
 
-  // Add a new car at random intervals
   useEffect(() => {
     const interval = setInterval(() => {
       addCar();
-    }, Math.random() * 2000 + 1000); // Random interval between 1 and 3 seconds
+    }, Math.random() * 2000 + 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // Move cars at regular intervals
   useEffect(() => {
     const interval = setInterval(() => {
       setCars((prevCars) =>
@@ -59,13 +64,16 @@ const Results = ({ addresses }) => {
   }, []);
 
   return (
-    <div className="results-background">
+    <div className="results-background ">
+      <div className="results-heading poppins-thin">
+        <h1>Shortest Path</h1>
+      </div>
       <div className="results-content">
-        <h1>Results</h1>
-        <p>The shortest path will be displayed here.</p>
         <ul>
-          {addresses.map((address, index) => (
-            <li key={index}>{address}</li>
+          {visibleAddresses.map((address, index) => (
+            <li key={index} className="fade-in">
+              {address}
+            </li>
           ))}
         </ul>
       </div>
