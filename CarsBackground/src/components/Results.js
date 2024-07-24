@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Car from "./Car";
 import { moveCar } from "../utils/moveCars";
 import "./Results.css";
+import Footer from "./Footer";
 
 const Results = ({ addresses }) => {
   const [visibleAddresses, setVisibleAddresses] = useState([]);
@@ -80,6 +81,7 @@ const Results = ({ addresses }) => {
       {cars.map((car) => (
         <Car key={car.id} position={car.position} direction={car.direction} />
       ))}
+      <Footer />
     </div>
   );
 };

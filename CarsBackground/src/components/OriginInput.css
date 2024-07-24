@@ -53,3 +53,30 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+.stops-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.column.hidden {
+  display: none;
+  opacity: 0;
+  transform: translateX(50%);
+}
+
+.column.visible {
+  opacity: 1;
+  transform: translateX(0);
+}

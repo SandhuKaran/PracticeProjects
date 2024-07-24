@@ -5,6 +5,7 @@ import OriginInput from "./components/OriginInput";
 import Results from "./components/Results";
 import axios from "axios";
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
   const [addresses, setAddresses] = useState([]);
@@ -45,13 +46,14 @@ function App() {
 
   return (
     <div className="App">
-      <section id="section-welcome">
+      <section id="section-welcome" className="section">
+        <Header />
         <AnimatedBackground />
       </section>
-      <section id="section-origin" className="section-origin">
+      <section id="section-origin" className="section section-origin">
         <OriginInput onSubmit={handleSubmit} />
       </section>
-      <section id="section-results" className="section-results">
+      <section id="section-results" className="section section-results">
         <Results addresses={shortestPath} />
       </section>
     </div>
@@ -61,7 +63,7 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App /> {/* Render App component */}
+    <App />
   </React.StrictMode>
 );
 

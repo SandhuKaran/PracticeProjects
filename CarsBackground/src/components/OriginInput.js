@@ -10,6 +10,7 @@ const OriginInput = ({ onSubmit }) => {
   const [stops, setStops] = useState([""]);
   const [destination, setDestination] = useState("");
   const sectionRef = useRef(null);
+  const [isSecondColumnVisible, setSecondColumnVisible] = useState(false);
 
   // Function to generate a random position for a car outside the screen bounds
   const generateInitialPosition = () => {
@@ -93,6 +94,14 @@ const OriginInput = ({ onSubmit }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (stops.length > 6) {
+      setSecondColumnVisible(true);
+    } else {
+      setSecondColumnVisible(false);
+    }
+  }, [stops.length]);
+
   const scrollToSection = () => {
     const element = document.getElementById("section-results");
     if (element) {
@@ -101,7 +110,7 @@ const OriginInput = ({ onSubmit }) => {
   };
 
   const handleStopClick = (index) => {
-    if (index === stops.length - 1 && stops.length < 15) {
+    if (index === stops.length - 1 && stops.length < 12) {
       setStops([...stops, ""]);
     }
   };
@@ -126,32 +135,53 @@ const OriginInput = ({ onSubmit }) => {
     <div className="animated-background">
       <div className="input-sections poppins-thin" ref={sectionRef}>
         <div className="input-section">
-          <h1>Origin</h1>
+          <h1>origin</h1>
           <input
             type="text"
-            placeholder="Enter origin address"
+            //placeholder="Enter origin address"
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
           />
         </div>
         <div className="input-section">
-          <h1>Stops</h1>
-          {stops.map((stop, index) => (
-            <input
-              key={index}
-              type="text"
-              placeholder={`Enter stop ${index + 1}`}
-              value={stop}
-              onChange={(e) => handleStopChange(index, e.target.value)}
-              onClick={() => handleStopClick(index)}
-            />
-          ))}
+          <h1>stops</h1>
+          <div className="stops-container">
+            <div className="column">
+              {stops.slice(0, 6).map((stop, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  //placeholder={`Enter stop ${index + 1}`}
+                  value={stop}
+                  onChange={(e) => handleStopChange(index, e.target.value)}
+                  onClick={() => handleStopClick(index)}
+                />
+              ))}
+            </div>
+            <div
+              className={`column ${
+                isSecondColumnVisible ? "visible" : "hidden"
+              }`}
+            >
+              {stops.slice(6, 12).map((stop, index) => (
+                <input
+                  key={index + 6}
+                  type="text"
+                  //placeholder={`Enter stop ${index + 7}`}
+                  value={stop}
+                  onChange={(e) => handleStopChange(index + 6, e.target.value)}
+                  onClick={() => handleStopClick(index + 6)}
+                />
+              ))}
+            </div>
+          </div>
+          {stops.length >= 12 && <p>Max limit of stops is 12</p>}
         </div>
         <div className="input-section">
-          <h1>Destination</h1>
+          <h1>target</h1>
           <input
             type="text"
-            placeholder="Enter destination address"
+            //placeholder="Enter destination address"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
           />
