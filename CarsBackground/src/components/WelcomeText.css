@@ -22,15 +22,24 @@
 
 .welcome-text {
   position: absolute;
-  top: 13%;
-  left: 10%;
+  top: 14%;
+  left: 4%;
   text-align: left;
+  z-index: 1;
+}
+
+.description-text {
+  position: absolute;
+  top: 17%;
+  right: 4%;
+  text-align: right;
   z-index: 1;
 }
 
 .welcome-text h1,
 .welcome-text h2,
-.welcome-text h3 {
+.welcome-text h3,
+.description-text p {
   margin: 0;
   font-weight: inherit;
   color: #000;
@@ -56,6 +65,21 @@
   animation-delay: 2s;
   line-height: 1.1;
   margin-top: 0.5rem;
+}
+
+.description-text p {
+  font-size: 1.5rem;
+  animation-delay: 2.5s;
+  line-height: 0.8;
+  margin-top: 1rem;
+}
+
+.description-text p:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.description-text p:nth-child(3) {
+  animation-delay: 3.5s;
 }
 
 @keyframes fadeIn {

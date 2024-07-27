@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Car from "./Car";
 import { moveCar } from "../utils/moveCars";
 import "./OriginInput.css";
-import "./WelcomeText.css"; // Import the new CSS file
+import "./WelcomeText.css";
+import AutocompleteInput from "./AutocompleteInput";
 
 const OriginInput = ({ onSubmit }) => {
   const [cars, setCars] = useState([]);
@@ -136,12 +137,7 @@ const OriginInput = ({ onSubmit }) => {
       <div className="input-sections poppins-thin" ref={sectionRef}>
         <div className="input-section">
           <h1>origin</h1>
-          <input
-            type="text"
-            //placeholder="Enter origin address"
-            value={origin}
-            onChange={(e) => setOrigin(e.target.value)}
-          />
+          <AutocompleteInput value={origin} onChange={setOrigin} />
         </div>
         <div className="input-section">
           <h1>stops</h1>
@@ -179,12 +175,7 @@ const OriginInput = ({ onSubmit }) => {
         </div>
         <div className="input-section">
           <h1>target</h1>
-          <input
-            type="text"
-            //placeholder="Enter destination address"
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-          />
+          <AutocompleteInput value={destination} onChange={setDestination} />
         </div>
       </div>
       {cars.map((car) => (

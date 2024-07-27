@@ -8,6 +8,9 @@ const Footer = () => {
         <div className="footer-left">
           <p>sandhk20@mcmaster.ca</p>
         </div>
+        <div className="footer-middle">
+          <p>Thanks for visiting</p>
+        </div>
         <div className="footer-right">
           <div className="social-icons">
             <a
