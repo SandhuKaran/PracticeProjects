@@ -3,6 +3,7 @@ import Car from "./Car";
 import { moveCar } from "../utils/moveCars";
 import "./AnimatedBackground.css";
 import "./WelcomeText.css"; // Import the new CSS file
+import image from "../images/4.png";
 
 const AnimatedBackground = () => {
   const [cars, setCars] = useState([]);
@@ -73,9 +74,14 @@ const AnimatedBackground = () => {
         <h2>simpler</h2>
         <h3>and easier.</h3>
       </div>
+      <div className="description-text poppins-thin">
+        <p>Input multiple addresses.</p>
+        <p>Get the shortest path.</p>
+      </div>
       {cars.map((car) => (
         <Car key={car.id} position={car.position} direction={car.direction} />
       ))}
+      <img className="delayed-image" src={image} alt="Description" />
       <div className="scroll-indicator" onClick={scrollToSection}>
         ↓
       </div>
