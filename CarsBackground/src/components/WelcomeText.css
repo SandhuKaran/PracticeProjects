@@ -30,8 +30,8 @@
 
 .description-text {
   position: absolute;
-  top: 17%;
-  right: 4%;
+  bottom: 11%;
+  right: 8%;
   text-align: right;
   z-index: 1;
 }
@@ -55,45 +55,47 @@
 
 .welcome-text h2 {
   font-size: 8rem;
-  animation-delay: 1s;
+  animation-delay: 0.7s;
   line-height: 1.1;
   margin-top: 0.5rem;
 }
 
 .welcome-text h3 {
   font-size: 8rem;
-  animation-delay: 2s;
+  animation-delay: 1.4s;
   line-height: 1.1;
   margin-top: 0.5rem;
 }
 
 .description-text p {
   font-size: 1.5rem;
-  animation-delay: 2.5s;
+  animation-delay: 2.4s;
   line-height: 0.8;
   margin-top: 1rem;
 }
 
 .description-text p:nth-child(2) {
-  animation-delay: 3s;
+  animation-delay: 2.7s;
 }
 
 .description-text p:nth-child(3) {
-  animation-delay: 3.5s;
+  animation-delay: 4s;
 }
 
 .delayed-image {
   position: absolute;
-  bottom: 4%;
+  top: 8%;
   right: 4%;
-  width: 400px; /* Adjust size as needed */
+  width: 480px; /* Adjust size as needed */
   opacity: 0;
-  animation: fadeIn 4s forwards;
-  animation-delay: 3.5s; /* Adjust delay as needed */
+  transform: translateY(50px); /* Start 100px below its final position */
+  animation: fadeInUp 2s forwards;
+  animation-delay: 2.1s; /* Adjust delay as needed */
 }
 
-@keyframes fadeIn {
+@keyframes fadeInUp {
   to {
     opacity: 1;
+    transform: translateY(0); /* Move to its final position */
   }
 }
